@@ -48,7 +48,7 @@ namespace Registeration
                 return;
             }
 
-            File.AppendAllLines(@"C:\Users\klara.hagelin\source\repos\library\library\users.txt", lines);
+            File.AppendAllLines(@"C:\Users\klara\source\repos\Library\library\users.txt", lines);
 
             Console.WriteLine("Du är nu registrerad och kan logga in. Vänligen vänta för att skickas till inloggningssidan.");
 
@@ -76,7 +76,7 @@ namespace Registeration
 
         static bool UserRegistered(string personalNumber)
         {
-            string[] users = System.IO.File.ReadAllLines(@"C:\Users\klara.hagelin\source\repos\library\library\users.txt");
+            string[] users = System.IO.File.ReadAllLines(@"C:\Users\klara\source\repos\Library\library\users.txt");
 
             for (int i = 0; i < users.Length; i++)
             {

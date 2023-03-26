@@ -40,7 +40,7 @@
 
         static bool Authenticate(string personalNumber, string password)
         {
-            string[] users = System.IO.File.ReadAllLines(@"C:\Users\klara.hagelin\source\repos\library\library\users.txt");
+            string[] users = System.IO.File.ReadAllLines(@"C:\Users\klara\source\repos\Library\library\users.txt");
 
             for (int i = 0; i < users.Length; i++)
             {

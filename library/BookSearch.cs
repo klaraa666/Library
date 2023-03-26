@@ -11,18 +11,14 @@ namespace BookSearch
     {
         private static Program? instance = null;
         library.book book = new book();
-        private static string Booksfilepath = "C:\\Users\\klara.hagelin\\source\repos\\library\\library\\books.txt";
+        private static string Booksfilepath = "C:\\Users\\klara\\source\\repos\\Library\\library\\books.txt";
 
-        private List<book> books = new List<book>();
-        public List<book> GetBooks() { return books; }
+        public static List<book> books = new List<book>();
+        public   List<book> GetBooks() { return books; }
 
-        private Program()
-        {
-            LoadBooks();
-        }
         public void AddBook(book book)
         {
-            book.Add(book);
+            books.Add(book);
             Save();
         }
 
@@ -41,23 +37,23 @@ namespace BookSearch
             }
             return instance;
         }
-        void LoadCars()
+        static void LoadBooks()
         {
-            string data = File.ReadAllText(@"C:\Users\klara.hagelin\source\repos\library\library\books.txt");
-
-            foreach (var c in data)
+            string[] booksdata = System.IO.File.ReadAllLines(@"C:\\Users\\klara\\source\\repos\\Library\\library\\books.txt");
+            for (int i = 0; i < booksdata.Length; i++)
             {
-                book book = new((string)c.Title, (string)c.Author, (string)c.Genre, (string)c.ISBN, (string)c.Availability);
+                var line = booksdata[i].Trim();
+                string[] parts = line.Split(',');
+                book book = new book(parts[0], parts[1], parts[2], parts[3], parts[4]);
                 books.Add(book);
             }
         }
-
-        static public void FussySearch()
+         static public void FussySearch()
         {
             // raderar historiken i terminalen (ascii erase display)
             Console.WriteLine("\u001b[2J\u001b[3J");
             Console.Clear();
-
+            LoadBooks();
             while (true)
             {
                 Console.Write("Sök efter en bok: ");
@@ -68,7 +64,7 @@ namespace BookSearch
                 Console.WriteLine("\u001b[2J\u001b[3J");
                 Console.Clear();
 
-                Console.WriteLine($"Sök efter en nok: {query}\n");
+                Console.WriteLine($"Sök efter en bok: {query}\n");
 
                 var result = FindBook(query);
 
@@ -76,36 +72,35 @@ namespace BookSearch
                 {
                     var book = result[i];
 
-                    Console.WriteLine($"Model: {book.Title}");
-                    Console.WriteLine($"Brand: {book.Author}");
-                    Console.WriteLine($"Model Year:{book.ISBN}\n");
+                    Console.WriteLine($"Title: {book.Title}");
+                    Console.WriteLine($"Författare: {book.Author}");
+                    Console.WriteLine($"ISBN:{book.ISBN}\n");
                 }
             }
+        }
+        static List<book> FindBook(string text)
+        {
+            var textLowerCase = text.ToLower();
+            int maxDistance = 2;
 
-            static List<book> FindBook(string text)
+            var result = new List<book>();
+
+            foreach (book book in books)
             {
-                var textLowerCase = text.ToLower();
-                int maxDistance = 2;
+                
+                var TitleDistance = LevesteinDistance.GetDistance(textLowerCase, book.Title.ToLower());
+                var AuthorDistance = LevesteinDistance.GetDistance(textLowerCase, book.Author.ToLower());
+                var GenreDistance = LevesteinDistance.GetDistance(textLowerCase, book.Genre.ToLower());
+                var ISBNDistance = LevesteinDistance.GetDistance(textLowerCase, book.ISBN.ToLower());
 
-                var result = new List<book>();
 
-                foreach (var book in books)
+                if (TitleDistance <= maxDistance || AuthorDistance <= maxDistance || GenreDistance <= maxDistance || ISBNDistance <= maxDistance)
                 {
-                    var TitleDistance = LevesteinDistance.GetDistance(book.Title.ToLower(), textLowerCase);
-                    var AuthorDistance = LevesteinDistance.GetDistance(book.Author.ToLower(), textLowerCase);
-                    var GenreDistance = LevesteinDistance.GetDistance(book.Genre.ToLower(), textLowerCase);
-                    var ISBNDistance = LevesteinDistance.GetDistance(book.ISBN.ToLower(), textLowerCase);
-
-
-                    if (TitleDistance <= maxDistance || AuthorDistance <= maxDistance || GenreDistance <= maxDistance || ISBNDistance <= maxDistance)
-                    {
-                        result.Add(book);
-                    }
+                    result.Add(book);
                 }
-
-                return result;
             }
 
+            return result;
         }
     }
 

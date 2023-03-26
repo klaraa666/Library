@@ -9,8 +9,6 @@ namespace profile
 {
     internal class Program
     {
-
-
         static public void ProfilePage()
         {
         profilestart:
@@ -62,18 +60,18 @@ namespace profile
         }
         static bool ChangePassword(string newPassword)
         {
-            string[] users = System.IO.File.ReadAllLines(@"C:\Users\klara.hagelin\source\repos\library\library\users.txt");
+            string[] users = System.IO.File.ReadAllLines(@"C:\Users\klara\source\repos\Library\library\users.txt");
             var line = users[login.Program.ID].Trim();
             string[] parts = line.Split(' ');
 
             //library.user user = new library.user( parts[4], newPassword);
 
-            users[login.Program.ID] = $"{parts[0]} {parts[1]} {parts[2]} {newPassword}";
+            users[login.Program.ID] = $"{ parts[0]} {parts[1]} {parts[2]} {newPassword}";
 
 
             if (true)
             {
-                File.WriteAllLines(@"C:\Users\klara.hagelin\source\repos\library\library\users.txt", users);
+                File.WriteAllLines(@"C:\Users\klara\source\repos\Library\library\users.txt", users);
                 return true;
             }
 
