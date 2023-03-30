@@ -1,9 +1,9 @@
 Pride and Prejudice,Jane Austen,Fiction,ISBN: 9780141439518,1
 To Kill a Mockingbird,Harper Lee,Fiction,ISBN: 9780060935467,1
-The Great Gatsby F. Scott Fitzgerald Fiction ISBN: 9780743273565 ,1
-Wuthering Heights Emily Bronte Fiction ISBN: 9780141439556,1
+The Great Gatsby,F. Scott Fitzgerald,Fiction,ISBN: 9780743273565,,0
+Wuthering Heights,Emily Bronte,Fiction,ISBN: 9780141439556,1
 Frankenstein,Mary Shelley,Gothic Fiction,ISBN: 9780486282114,1
-Jane Eyre,Charlotte Bronte,Fiction,ISBN: 9780141441146,1
+Jane Eyre,Charlotte Bronte,Fiction,ISBN: 9780141441146,,0
 The Catcher in the Rye,J.D. Salinger,Fiction,ISBN: 9780316769488,1
 The Picture of Dorian Gray,Oscar Wilde,Fiction,ISBN: 9780141442464,1
 Moby-Dick,Herman Melville,Fiction,ISBN: 9780143124672,1
@@ -21,7 +21,7 @@ One Hundred Years of Solitude,Gabriel Garcia Marquez,Fiction,ISBN: 9780060883287
 Crime and Punishment,Fyodor Dostoevsky,Fiction,ISBN: 9780486415871,1
 Anna Karenina,Leo Tolstoy,Fiction,ISBN: 9780140449174,1
 The Three Musketeers,Alexandre Dumas,Fiction,ISBN: 9780140440751,1
-The Iliad Homer Poetry ISBN: 9780140275360 ,0
+The Iliad,Homer,Poetry,ISBN: 9780140275360,0
 Heart of Darkness,Joseph Conrad,Fiction,ISBN: 9780141441672,1
 Dubliners,James Joyce,Fiction,ISBN: 9780141182458,1
 The Trial,Franz Kafka,Fiction,ISBN: 9780199238293,1

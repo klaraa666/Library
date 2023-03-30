@@ -112,12 +112,12 @@ namespace library
                             Console.Write("Skriv 1 för att göra användaren till biblotikarie. Annars skriv 0: ");
                             var librarian = Console.ReadLine();
 
-                            var line = $"{firstName} {lastName} {personalNumber} {password} {librarian}";
-                            string[] lines = { line };
+                            var line1 = $"{firstName} {lastName} {personalNumber} {password} {librarian}";
+                            string[] lines1 = { line1 };
 
                             Console.WriteLine("");
 
-                               File.AppendAllLines(@"C:\Users\klara\source\repos\Library\library\users.txt", lines);
+                               File.AppendAllLines(@"C:\Users\klara\source\repos\Library\library\users.txt", lines1);
 
                          }
                                                 Console.ReadKey();
@@ -158,12 +158,12 @@ namespace library
                             Console.Write("exemplar: ");
                             var availability = Console.ReadLine();
 
-                            var line = $"{title} {author} {ISBN} {availability}";
-                            string[] lines = { line };
+                            var line2 = $"{title} {author} {ISBN} {availability}";
+                            string[] lines2 = { line2 };
 
                             Console.WriteLine("");
 
-                               File.AppendAllLines(@"C:\Users\klara\source\repos\Library\library\books.txt", lines);
+                               File.AppendAllLines(@"C:\Users\klara\source\repos\Library\library\books.txt", lines2);
                     }
             }
            
@@ -171,5 +171,5 @@ namespace library
 
     }
    
-
+    }
 }
